@@ -94,6 +94,7 @@ const handleDelete = (studentId:number) => {
     if (result.isConfirmed) {
       // Delete student
       await axios.delete(`${apiUrl}/user/${studentId}`);
+      fetchStudents();
       console.log(`Deleting student with ID ${studentId}`);
       MySwal.fire('Deleted!', 'The student has been deleted.', 'success');
     }
