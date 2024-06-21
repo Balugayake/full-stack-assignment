@@ -147,7 +147,7 @@ console.log(filteredStudents)
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
-                <th scope="col">index</th>
+                <th scope="col">StudentID</th>
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">RollNumber</th>

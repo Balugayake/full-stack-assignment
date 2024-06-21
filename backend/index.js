@@ -142,7 +142,6 @@ app.put("/user/:id", async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 });
-
 app.delete("/user/:id", async (req, res) => {
     const { id } = req.params;
     try {
@@ -152,11 +151,12 @@ app.delete("/user/:id", async (req, res) => {
         if (!student) {
             return res.status(404).json({ error: `Student with id ${id} not found.` });
         }
-        const deletedStudent = await prisma.student.delete({
-            where: { id: Number(id) },
-        });
         const deletedMarksEntries = await prisma.mark.deleteMany({
             where: { studentId: Number(id) },
+        });
+       
+        const deletedStudent = await prisma.student.delete({
+            where: { id: Number(id) },
         });
         res.status(200).json({ deletedStudent, deletedMarksEntries });
     } catch (error) {
