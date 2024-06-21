@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Full Stack Application Documentation
 
-## Getting Started
+This document provides instructions for setting up, running, and using the full stack application composed of frontend and backend components.
 
-First, run the development server:
+1. ## Prerequisites
+   Before running the application, ensure you have the following software installed on your machine:
+   Node.js: Version 20 or higher
+   Docker: Required for setting up the backend database
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. ## Frontend Setup
+   Step-by-Step Instructions
+   Navigate to Frontend Directory
+   bash
+   Copy code
+   cd ./full-stack-assignment/frontend
+   Install Dependencies
+   bash
+   Copy code
+   npm install
+   Run Development Server
+   bash
+   Copy code
+   npm run dev
+   Access the Application
+   Open your browser and go to http://localhost:3000 to view the frontend application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. ## Backend Setup
+   Step-by-Step Instructions
+   Navigate to Backend Directory
+   bash
+   Copy code
+   cd ./full-stack-assignment/backend
+   Install Dependencies
+   bash
+   Copy code
+   npm install express prisma @prisma/client
+    Generate Prisma Client
+    npx prisma generate
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build Docker Containers Ensure Docker is running, then build the containers:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+docker-compose build
 
-## Learn More
+Start Docker Containers
 
-To learn more about Next.js, take a look at the following resources:
+docker-compose up -dThis command starts the backend services in detached mode (-d).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run Database Migrations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+docker exec -it backend npx prisma migrate dev --name init
+Replace backend with the actual name or ID of your backend container if different. 4. API Endpoints
+Backend API Endpoints
+POST /user: Creates a new student with details provided in the request body.
+Request Body: { "firstName": "string", "lastName": "string", "rollNumber": "string", "marks": [{ "subject": "string", "mark": number }] }
+GET /user: Retrieves a list of students.
+PUT /user/:id
+: Updates a student's details and marks.
+Request Body: { "firstName": "string", "lastName": "string", "rollNumber": "string", "marks": [{ "subject": "string", "mark": number }] }
+DELETE /user/:id
+: Deletes a student and associated marks by ID. 5. Additional Notes
+Environment Variables: Ensure necessary environment variables are set (e.g., database URLs, API keys) for both frontend and backend components.
+DATABASE_URL="postgresql://postgresql:postgresql@localhost:5432/postgres?schema=public"
 
-## Deploy on Vercel
+Troubleshooting: If encountering issues, check logs (docker-compose logs for backend) and ensure dependencies and services are correctly configured.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+//postMan collection link
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://bgteams548.postman.co/workspace/crud~26db2b4b-4f81-48cf-9f17-f2bec3dcd023/collection/18368118-6356ac72-80aa-4293-983c-ef5fe7c1720d?action=share&creator=18368118
