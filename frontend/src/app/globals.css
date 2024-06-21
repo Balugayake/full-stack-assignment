@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0rem 3rem;
+    min-height: 100vh;
+  }
+  .table-container{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 0.5rem 0.5rem #f7f7f7;
+  } 
+  .table-header{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .table-body{
+    padding: 1rem;
+  }
+  .table-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem;
+  }
+  
