@@ -17,7 +17,7 @@ export interface StudentMarkModalProps {
 
 const StudentMarkModal: React.FC<StudentMarkModalProps> = ({ show,marks, handleClose }) => {
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} >
     <Modal.Header closeButton>
       <Modal.Title>Student Subject Marks</Modal.Title>
     </Modal.Header>
@@ -43,7 +43,7 @@ const StudentMarkModal: React.FC<StudentMarkModalProps> = ({ show,marks, handleC
       </table>
       <button onClick={handleClose} className="btn btn-secondary mt-3 ">Close</button>
     </div>
-    </Modal.Body>
+    </Modal.Body >
   </Modal>
   );
 }

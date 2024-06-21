@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 3rem 0rem 3rem;
     min-height: 100vh;
+
   }
   .table-container{
     display: flex;
@@ -25,5 +26,8 @@
     justify-content: space-between;
     align-items: center;
     padding:1rem;
+  }
+  .modal-backdrop.show {
+    opacity: 0.1;
   }
   
