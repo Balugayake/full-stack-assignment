@@ -41,7 +41,7 @@ const [studentsData, setStudents] = useState<StudentData>({
 
   useEffect(() => {
     fetchStudents();
-  }, [currentPage, perPage]);
+  }, [currentPage, perPage,isModalOpen]);
   const fetchStudents = async () => {
     try {
       const fetchData = await axios.get(`${apiUrl}/user?page=${currentPage}&limit=${pageSize}`);
